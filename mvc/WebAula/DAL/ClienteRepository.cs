@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using WebAula.Domain;
 
-namespace ExemploCRUD
+namespace WebAula.DAL
 {
     /// <summary>
     /// Classe cliente responsável pelo acesso ao repositório

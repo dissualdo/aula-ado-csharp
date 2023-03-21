@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using WebAula.DAL;
 using WebAula.Domain;
 using WebAula.Models;
 
