@@ -1,5 +1,4 @@
-﻿using ExemploCRUD;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using WebAula.DAL;
