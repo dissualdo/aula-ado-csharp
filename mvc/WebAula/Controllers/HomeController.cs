@@ -11,7 +11,7 @@ namespace WebAula.Controllers
     /// Controlador para a Home do sistema
     /// </summary>
     public class HomeController : Controller
-    { 
+    {
         private string _connectionString;
         private ClienteRepository _clienteRepository;
         private readonly IConfiguration _configuration;
@@ -28,9 +28,9 @@ namespace WebAula.Controllers
             _logger = logger;
             _configuration = configuration;
             _homeViewModel = new HomeViewModel();
-            _connectionString = _configuration.GetConnectionString("MyConnectionString");
+            _connectionString = _configuration.GetConnectionString("Aula");
             _clienteRepository = new ClienteRepository(_connectionString);
-           
+
         }
 
         /// <summary>
@@ -40,13 +40,13 @@ namespace WebAula.Controllers
         public IActionResult Index()
         {
             try
-            { 
-                _homeViewModel.Clientes  = _clienteRepository.ListarClientes();
+            {
+                _homeViewModel.Clientes = _clienteRepository.ListarClientes();
 
             }
             catch (Exception err)
             {
-                _logger.LogInformation(err.Message, DateTime.UtcNow.ToLongTimeString()); 
+                _logger.LogInformation(err.Message, DateTime.UtcNow.ToLongTimeString());
             }
 
             return View(_homeViewModel);
