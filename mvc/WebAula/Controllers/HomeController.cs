@@ -62,5 +62,91 @@ namespace WebAula.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Cliente cliente)
+        {
+            try
+            {
+                if (cliente != null)
+                {
+                    _clienteRepository.InserirCliente(cliente);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            return View();
+        }
+
+        public IActionResult Edit(long id)
+        {
+            var cliente = default(Cliente);
+            try
+            {
+                if (id > 0)
+                {
+                    cliente = _clienteRepository
+                              .ListarClientes()
+                              .FirstOrDefault(a => a.Id == id);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            return View("Create", cliente);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Cliente cliente)
+        {
+            try
+            {
+                if (cliente != null)
+                {
+                    _clienteRepository.AtualizarCliente(cliente.Id, cliente);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            return View();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                if (id > 0)
+                {
+                    _clienteRepository.RemoverCliente(id);
+
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return View();
+        }
     }
 }

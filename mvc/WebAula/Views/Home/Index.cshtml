@@ -6,12 +6,15 @@
 <div class="text-center">
     <h1 class="display-4">Clientes</h1>
 
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Home")'">Criar</button>
+
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">E-mail</th> 
+                <th scope="col"></th> 
             </tr>
         </thead>
         <tbody class="table-group-divider">
@@ -23,7 +26,11 @@
                         <tr>
                             <th scope="row">@item.Id</th>
                             <td>@item.Nome</td>
-                            <td>@item.Email</td> 
+                            <td>@item.Email</td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { onclick="return confirm_delete()", title="Btn deletar", id="idDelete_"+item.Id})
+                            </td>
                         </tr>
                     }
                 }
@@ -38,4 +45,8 @@
     </table>
      
 </div>
-
+<script type="text/javascript">
+    function confirm_delete() {
+        return confirm('tem certeza de deseja deletar esse cadastro?');
+    }
+</script>

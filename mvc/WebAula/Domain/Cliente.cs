@@ -11,5 +11,6 @@
             Nome = nome;
             Email = email;
         }
+        public Cliente() { }
     }
 }

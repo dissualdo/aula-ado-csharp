@@ -26,7 +26,7 @@ namespace WebAula.DAL
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string sql = "INSERT INTO Cliente (Nome, Email) VALUES (@Nome, @Email);";
+                string sql = "INSERT INTO Aula.dbo.Cliente (Nome, Email) VALUES (@Nome, @Email);";
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 command.Parameters.AddWithValue("@Nome", cliente.Nome);
@@ -80,7 +80,7 @@ namespace WebAula.DAL
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string sql = "UPDATE Cliente SET Nome = @Nome, Email = @Email WHERE Id = @Id;";
+                string sql = "UPDATE Aula.dbo.Cliente SET Nome = @Nome, Email = @Email WHERE Id = @Id;";
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 command.Parameters.AddWithValue("@Nome", cliente.Nome);
@@ -102,7 +102,7 @@ namespace WebAula.DAL
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string sql = "DELETE FROM Cliente WHERE Id = @Id;";
+                string sql = "DELETE FROM Aula.dbo.Cliente WHERE Id = @Id;";
                 SqlCommand command = new SqlCommand(sql, connection);
 
                 command.Parameters.AddWithValue("@Id", id);
